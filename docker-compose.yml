@@ -1,8 +1,8 @@
 version: "3.3"
 services:
     gateway:
-        ports:
-            - 8080:8080
+#        ports:
+#            - 8080:8080
         image: openfaas/gateway:0.17.3
         networks:
             - functions
@@ -34,6 +34,9 @@ services:
                 delay: 5s
                 max_attempts: 20
                 window: 380s
+           labels:
+                - traefik.port=8080
+                - traefik.frontend.rule=PathPrefix:/ui,/system,/function
             placement:
                 constraints:
                     - "node.platform.os == linux"
