@@ -34,7 +34,7 @@ services:
                 delay: 5s
                 max_attempts: 20
                 window: 380s
-           labels:
+            labels:
                 - traefik.port=8080
                 - traefik.frontend.rule=PathPrefix:/ui,/system,/function
             placement:
